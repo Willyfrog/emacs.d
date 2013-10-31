@@ -9,8 +9,8 @@
 ;;
 ;;; Code:
 (add-to-list 'load-suffixes ".el.gpg") ;; allow for encrypted .el files
-
-(add-to-list 'load-path "~/.emacs.d/hy-mode")
+(add-to-list 'load-path "~/emacs.d/emacs_custom/")
+(add-to-list 'load-path "~/emacs.d/hy-mode")
 (require 'hy-mode)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -94,7 +94,8 @@
 
 ;;No tool bar mode
 (tool-bar-mode -1)
-
+;;No menu bar mode
+(menu-bar-mode -1)
 ;;IDO
 (require 'ido)
 (ido-mode t)
@@ -105,6 +106,8 @@
 (setq show-paren-delay 0)
 (display-battery-mode t)
 (setq inhibit-startup-message t)
+
+(require 'php-mode)
 
 ;; set major modes
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -122,66 +125,10 @@
 (add-to-list 'auto-mode-alist '("\\.lsp\\'" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
 
-;; funcion propia para convertir a 4 espacios
-(require 'php-mode)
-(defun my-php-mode-hook ()
-  "My PHP mode configuration.  http://stackoverflow.com/questions/12254982/emacs-php-indentation ."
-  (setq indent-tabs-mode nil
-        tab-width 4
-        c-default-style "linux"
-        c-basic-offset 4)
-  (setq case-fold-search t)
-  ;;(setq fill-column 78)
-  ;;(c-set-offset 'arglist-cont 0)
-  ;;(c-set-offset 'arglist-intro '+)
-  (set (make-local-variable 'compile-command)
-       (format "phpcs --report=emacs --standard=PSR2 %s"
-               (buffer-file-name)))
-  ;(require 'flyphpcs)
-  (setq fly/phpcs-phpcs-dir "/usr/bin")
-  (setq fly/phpcs-phpcs-phpinc "/usr/include/php")
-  (setq fly/phpcs-phpexe "/usr/bin/php")
-  (setq fly/phpcs-standard "PSR2")
-  (c-set-offset 'case-label 4)
-  (setq fill-column 120)
-  )
-  ;;(c-set-offset 'arglist-close 0))
-
-(defun my-common-lisp-mode-hook ()
-  "Common lisp configuration."
-  ;;(setq inferior-lisp-program "rlwrap sbcl")
-  (setq inferior-lisp-program "sbcl")
-  (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-  (require 'slime)
-  (slime-setup)
-  (paredit-mode)
-  )
-
-(defun my-python-mode-hook ()
-  "Python configuration."
-  ;; (jedi:setup)
-  ;; (setq jedi:server-args
-  ;;     '("--log" "python-epc.log"
-  ;;       "--log-level" "DEBUG"))
-  ;; (setq jedi:setup-keys t)
-  ;; (setq jedi:complete-on-dot t)
-  (setq py-shell-switch-buffers-on-execute-p t)
-  (setq py-switch-buffers-on-execute-p t)
-  (setq py-split-windows-on-execute-p nil)
-  (setq py-smart-indentation t))
-
 ;; flycheck
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; hooks para cargar cosas extra con los modes
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
-(add-hook 'php-mode-hook 'my-php-mode-hook)
-(add-hook 'hy-mode-hook 'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(add-hook 'lisp-mode-hook 'my-common-lisp-mode-hook)
+(require 'custom_hooks)
 
 (setq-default indent-tabs-mode nil) ;; usa espacios en vez de tabuladores
 (setq tab-width 4)          ;; 4 espacios por tab
@@ -199,6 +146,15 @@
 ;; shift+direction moves to that window
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
+
+;; make buffernames unique
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+;; 
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (concat user-emacs-directory "places"))
 
 ;; php lint
 (defun php-lint-file ()
@@ -223,7 +179,7 @@
 
 
 ;; my custom functions
-(add-to-list 'load-path "~/vimfiles/emacs_custom/")
+
 (require 'kill_project_buffers)
 (require 'start_gtalk)
 (custom-set-faces
@@ -233,6 +189,15 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Anonymous Pro" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
 
+
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory
+                                                 "backups"))))
+
+;; custom key-bindings
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; theme is the last thing to load, so if something breaks in the config, 
+;; everything will be white telling me that something went wrong
 (load-theme 'deeper-blue-mine t)
 (provide 'emacs)
 ;;; emacs ends here

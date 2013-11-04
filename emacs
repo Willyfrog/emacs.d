@@ -124,6 +124,8 @@
 (add-to-list 'auto-mode-alist '("\\.lisp\\'" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.lsp\\'" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 
 ;; flycheck
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)
@@ -198,6 +200,9 @@
 
 ;; theme is the last thing to load, so if something breaks in the config, 
 ;; everything will be white telling me that something went wrong
+(add-to-list 'custom-theme-load-path "~/emacs.d/themes")
 (load-theme 'deeper-blue-mine t)
+
+
 (provide 'emacs)
 ;;; emacs ends here

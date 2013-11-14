@@ -67,6 +67,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+(require 'ox-reveal) ;; for org-reveal
 
 ;; apply some configuration for Mac OS X only
 (if (string-equal system-type "darwin")

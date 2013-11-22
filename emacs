@@ -117,7 +117,7 @@
 (add-to-list 'auto-mode-alist '("\\.rst\\'" . rst-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js3-mode))
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.hy\\'" . hy-mode))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\emacs\\'" . emacs-lisp-mode))
@@ -171,15 +171,19 @@
 (yas-global-mode 1)
 
 ;; para que fci este a 80
-(setq-default fill-column 80)
+;;(setq-default fill-column 80)
 
 ;; linea para marcar el ancho que debería mantener
 (require 'fill-column-indicator)
-(define-globalized-minor-mode
-  global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode t)
 (setq fci-rule-color "darkblue")
+; better load on hook load with (fci-mode 1)
+;(define-globalized-minor-mode
+;  global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;(global-fci-mode t)
 
+
+;; custom info files
+(add-to-list 'Info-default-directory-list "~/emacs.d/info")
 
 ;; my custom functions
 

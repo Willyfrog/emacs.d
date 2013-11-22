@@ -19,7 +19,8 @@
   (setq fly/phpcs-phpexe "/usr/bin/php")
   (setq fly/phpcs-standard "PSR2")
   (c-set-offset 'case-label 4)
-  (setq fill-column 120))
+  (setq fill-column 120)
+  (fci-mode 1))
   ;;(c-set-offset 'arglist-close 0))
 
 (defun my-common-lisp-mode-hook ()
@@ -29,7 +30,8 @@
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
   (require 'slime)
   (slime-setup)
-  (paredit-mode))
+  (paredit-mode)
+  (fci-mode 1))
 
 (defun my-python-mode-hook ()
   "Python configuration."
@@ -42,7 +44,9 @@
   (setq py-shell-switch-buffers-on-execute-p t)
   (setq py-switch-buffers-on-execute-p t)
   (setq py-split-windows-on-execute-p nil)
-  (setq py-smart-indentation t))
+  (setq py-smart-indentation t)
+  (setq qfill-column 80)
+  (fci-mode 1))
 
 
 ;; hooks para cargar cosas extra con los modes

@@ -67,11 +67,13 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; org-mode
-(require 'org-install)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+;(require 'org-install)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
-(require 'ox-reveal) ;; for org-reveal
+;(require 'ox-reveal) ;; for org-reveal
 
 ;smart-mode-line
 (setq sml/theme 'dark)
@@ -127,7 +129,7 @@
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.hy\\'" . hy-mode))
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.lisp\\'" . lisp-mode))

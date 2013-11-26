@@ -7,6 +7,10 @@
 ;; This config file can be copied and modified. 
 ;; No need to ask for permission or mention author.
 ;;
+
+;; augment recursivity
+(setq max-lisp-eval-depth 12000)
+
 ;;; Code:
 (add-to-list 'load-suffixes ".el.gpg") ;; allow for encrypted .el files
 (add-to-list 'load-path "~/emacs.d/emacs_custom/")
@@ -68,6 +72,10 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (require 'ox-reveal) ;; for org-reveal
+
+;smart-mode-line
+(setq sml/theme 'dark)
+(sml/setup)
 
 ;; apply some configuration for Mac OS X only
 (if (string-equal system-type "darwin")

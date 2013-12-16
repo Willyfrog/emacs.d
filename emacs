@@ -1,6 +1,6 @@
 ;;; package --- Summary
 ;;
-;; .emacs de Guillermo Vayá Pérez guivaya@gmail.com @Driadan
+;; .emacs de Guillermo Vayá Pérez guivaya@gmail.com @Willyfrog_
 ;;
 ;;; Commentary: 
 ;;
@@ -38,7 +38,6 @@
 	 cider
          deferred
          fill-column-indicator
-         jedi
          js3-mode
          json
          magit
@@ -76,8 +75,11 @@
 ;(require 'ox-reveal) ;; for org-reveal
 
 ;smart-mode-line
-(setq sml/theme 'dark)
-(sml/setup)
+;(setq sml/theme 'dark)
+;(sml/setup)
+;power-line
+(require 'powerline)
+(powerline-default-theme)
 
 ;; apply some configuration for Mac OS X only
 (if (string-equal system-type "darwin")
@@ -150,6 +152,8 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+;(autoload 'jedi:setup "jedi" nil t)
+
 (setq twittering-use-master-password t)
 
 ;; habilitar acentos
@@ -191,7 +195,6 @@
 ;  global-fci-mode fci-mode (lambda () (fci-mode 1)))
 ;(global-fci-mode t)
 
-
 ;; custom info files
 (add-to-list 'Info-default-directory-list "~/emacs.d/info")
 
@@ -221,3 +224,9 @@
 
 (provide 'emacs)
 ;;; emacs ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))

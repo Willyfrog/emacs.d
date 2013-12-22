@@ -116,6 +116,7 @@
 
 ;;Parentesis
 (show-paren-mode 1)
+(setq show-paren-style 'expression)
 (setq show-paren-delay 0)
 (display-battery-mode t)
 (setq inhibit-startup-message t)
@@ -219,7 +220,8 @@
 ;; theme is the last thing to load, so if something breaks in the config, 
 ;; everything will be white telling me that something went wrong
 (add-to-list 'custom-theme-load-path "~/emacs.d/themes")
-(load-theme 'deeper-blue-mine t)
+;(load-theme 'deeper-blue-mine t)
+(load-theme 'moe-dark t)
 
 
 (provide 'emacs)

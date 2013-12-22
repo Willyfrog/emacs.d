@@ -208,7 +208,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Anonymous Pro" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
+ '(default ((t (:family "Mensch" :foundry "bitstream" :slant normal :weight normal :height 113 :width normal)))))
 
 
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
@@ -231,4 +231,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
+ '(display-battery-mode t)
+ '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api"))))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))

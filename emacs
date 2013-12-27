@@ -223,6 +223,11 @@
 ;(load-theme 'deeper-blue-mine t)
 (load-theme 'moe-dark t)
 
+; enable projectile for all
+(projectile-global-mode)
+
+; expand region with C-=
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 (provide 'emacs)
 ;;; emacs ends here

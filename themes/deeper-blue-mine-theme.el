@@ -67,7 +67,7 @@
  '(lazy-highlight ((((class color) (min-colors 89)) (:background "cadetblue" :foreground "white"))))
  '(match ((((class color) (min-colors 89)) (:background "DeepPink4"))))
  '(minibuffer-prompt ((((class color) (min-colors 89)) (:foreground "CadetBlue1"))))
- '(mode-line ((((class color) (min-colors 89)) (:background "gray75" :foreground "black" :box (:line-width 1 :style released-button)))))
+ '(mode-line ((((class color) (min-colors 89)) (:background "gray75" :foreground "black" :height 90 :box (:line-width 1 :style released-button)))))
  '(mode-line-buffer-id ((((class color) (min-colors 89)) (:weight bold :background nil :foreground "blue4"))))
  '(mode-line-inactive ((((class color) (min-colors 89)) (:background "gray40" :foreground "black" :box (:line-width 1 :color "gray40" :style nil)))))
  '(outline-1 ((((class color) (min-colors 89)) (:foreground "SkyBlue1"))))

@@ -40,7 +40,8 @@
 (defconst hy-font-lock-keywords
   `((,(concat "(\\("
               (regexp-opt '("defn" "defun" "defclass" "import"
-                            "defmacro" "require" "defmacro-alias"))
+                            "defmacro" "require" "defmacro-alias"
+                            "defmacro/g!" "defreader"))
               "\\)\\>"
               ;; Spaces
               "[ \r\n\t]+"
@@ -50,10 +51,11 @@
      (2 font-lock-function-name-face nil t))
     (,(concat "(\\("
               (regexp-opt
-               '("do" "for" "foreach" "try" "throw" "raise" "progn" "catch"
+               '("do" "for" "for*" "try" "throw" "raise" "progn" "catch"
                  "else" "finally" "except" "if" "unless" "when" "assert" "global"
                  "lambda" "fn" "yield" "with-decorator" "with_decorator" "with"
-                 "kwapply" "while" "let" "cond" "_>" "->" "_>>" "->>"))
+                 "with*" "kwapply" "while" "let" "cond" "_>" "->" "_>>" "->>"
+                 "with-gensym"))
               "\\)[ \n\r\t)]")
      (1 font-lock-keyword-face))
     (,(concat "(\\("
@@ -64,10 +66,11 @@
                  "|" "^" "&" "-" "+=" "/=" "//=" "*=" "-=" "_=" "%=" "**=" "<<="
                  ">>=" "|=" "^=" "&=" "setv" "def" "car" "first" "cdr" "rest"
                  "take" "drop" "print" "quasiquote" "unquote" "unquote-splice"
-		 "take-while" "take-nth" "drop-while" "cycle" "dec" "distinct"
-		 "empty?" "even?" "filter" "float?" "inc" "instance?" "iterable?"
-		 "neg?" "odd?" "pos?" "remove" "repeat" "repeatedly" "second"
-		 "string?" "zero?"))
+                 "take-while" "take-nth" "drop-while" "cycle" "dec" "distinct"
+                 "empty?" "even?" "filter" "float?" "inc" "instance?" "iterable?"
+                 "neg?" "odd?" "pos?" "remove" "repeat" "repeatedly" "second"
+                 "string?" "zero?" "del" "gensym" "macroexpand"
+                 "macroexpand-1" "nil?" "none?" "flatten"))
               "\\)[ \n\r\t)]")
      (1 font-lock-builtin-face))
     ("\\<:[^ \r\n\t]+\\>" 0 font-lock-constant-face)
@@ -75,7 +78,7 @@
 
 (defcustom hy-indent-specform
   '(("for" . 1)
-    ("foreach" . 1)
+    ("for*" . 1)
     ("while" . 1)
     ("except" . 1)
     ("catch" . 1)
@@ -160,6 +163,7 @@ Lisp function does not specify a special indentation."
   (setq-local comment-start-skip
               "\\(\\(^\\|[^\\\\\n]\\)\\(\\\\\\\\\\)*\\)\\(;+\\|#|\\) *")
   (setq-local comment-add 1)
+  (setq-local indent-tabs-mode nil)
   (setq-local inferior-lisp-program hy-mode-inferior-lisp-command)
   (setq-local indent-line-function 'lisp-indent-line)
   (setq-local lisp-indent-function 'hy-indent-function)

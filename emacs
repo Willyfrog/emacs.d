@@ -135,7 +135,6 @@
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.hy\\'" . hy-mode))
-;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.lisp\\'" . lisp-mode))
@@ -239,7 +238,6 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ; diminish modes to reduce clutter
-
 (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
 (eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
 (eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
@@ -250,10 +248,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Linum-format "%7i ")
- '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "c8e7d4c688aff76962a48e4f3b2fae0ec3992edcd18756ae8510318332d8a2a4" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
  '(fringe-mode 4 nil (fringe))
  '(main-line-separator-style (quote chamfer))
- '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
+ '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
 
 ;; theme is the last thing to load, so if something breaks in the config, 
 ;; everything will be white telling me that something went wrong

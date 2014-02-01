@@ -109,13 +109,16 @@
 (tool-bar-mode -1)
 ;;No menu bar mode
 (menu-bar-mode -1)
+;;No scrollbar
+(scroll-bar-mode -1)
 ;;IDO
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t)
+(ido-vertical-mode t)
 
 ;;Parentesis
-(show-paren-mode 1)
+(show-paren-mode t)
 (setq show-paren-style 'expression)
 (setq show-paren-delay 0)
 (display-battery-mode t)
@@ -214,30 +217,49 @@
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups"))))
 
-;; custom key-bindings
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-;; theme is the last thing to load, so if something breaks in the config, 
-;; everything will be white telling me that something went wrong
-(add-to-list 'custom-theme-load-path "~/emacs.d/themes")
-;(load-theme 'deeper-blue-mine t)
-(load-theme 'moe-dark t)
-
 ; enable projectile for all
 (projectile-global-mode)
+
+; ace jump mode
+(autoload 'ace-jump-mode "ace-jump-mode")
+
+;;; CUSTOM KEY-BINDINGS
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; 
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-x C-k") 'kill-region)
+;; ido mode para M-x
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; old M-x.
+;; ace-jump
+(global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
 
 ; expand region with C-=
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-(provide 'emacs)
-;;; emacs ends here
+; diminish modes to reduce clutter
+
+(eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
+(eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
+(eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(display-battery-mode t)
- '(menu-bar-mode nil)
- '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api"))))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(Linum-format "%7i ")
+ '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "c8e7d4c688aff76962a48e4f3b2fae0ec3992edcd18756ae8510318332d8a2a4" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(fringe-mode 4 nil (fringe))
+ '(main-line-separator-style (quote chamfer))
+ '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
+
+;; theme is the last thing to load, so if something breaks in the config, 
+;; everything will be white telling me that something went wrong
+(add-to-list 'custom-theme-load-path "~/emacs.d/themes")
+(load-theme 'deeper-blue-mine t)
+;(load-theme 'moe-dark t)
+
+(provide 'emacs)
+;;; emacs ends here

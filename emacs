@@ -232,7 +232,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; old M-x.
 ;; ace-jump
-(global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-c C-s") 'ace-jump-mode)
 
 ; expand region with C-=
 (global-set-key (kbd "C-=") 'er/expand-region)

@@ -73,6 +73,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 ;(require 'ox-reveal) ;; for org-reveal
+(require 'ox-md) ;; allow for exporting to Markdown
 
 ;smart-mode-line
 ;(setq sml/theme 'dark)
@@ -248,9 +249,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Linum-format "%7i ")
+ '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(erc-autojoin-mode t)
+ '(erc-nick "guille")
+ '(erc-nick-uniquifier "_")
+ '(erc-notify-mode t)
+ '(erc-server "10.0.0.69")
  '(fringe-mode 4 nil (fringe))
  '(main-line-separator-style (quote chamfer))
- '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
  '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
 
 ;; theme is the last thing to load, so if something breaks in the config, 

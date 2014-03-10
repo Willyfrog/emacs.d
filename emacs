@@ -265,5 +265,7 @@
 (load-theme 'deeper-blue-mine t)
 ;(load-theme 'moe-dark t)
 
+(pretty-mode t)
+
 (provide 'emacs)
 ;;; emacs ends here

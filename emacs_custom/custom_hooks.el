@@ -45,7 +45,7 @@
   (setq py-switch-buffers-on-execute-p t)
   (setq py-split-windows-on-execute-p nil)
   (setq py-smart-indentation t)
-  (setq qfill-column 80)
+  (setq fill-column 80)
   (fci-mode 1))
 
 

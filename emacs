@@ -71,16 +71,17 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+
 (setq org-log-done t)
 ;(require 'ox-reveal) ;; for org-reveal
 (require 'ox-md) ;; allow for exporting to Markdown
 
 ;smart-mode-line
-;(setq sml/theme 'dark)
-;(sml/setup)
+(setq sml/theme 'dark)
+(sml/setup)
 ;power-line
-(require 'powerline)
-(powerline-default-theme)
+;(require 'powerline)
+;(powerline-default-theme)
 
 ;; apply some configuration for Mac OS X only
 (if (string-equal system-type "darwin")
@@ -238,6 +239,9 @@
 ; expand region with C-=
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+; switch window
+(global-set-key (kbd "M-o") 'other-window)
+
 ; diminish modes to reduce clutter
 (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
 (eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
@@ -262,8 +266,8 @@
 ;; theme is the last thing to load, so if something breaks in the config, 
 ;; everything will be white telling me that something went wrong
 (add-to-list 'custom-theme-load-path "~/emacs.d/themes")
-(load-theme 'deeper-blue-mine t)
-;(load-theme 'moe-dark t)
+;(load-theme 'deeper-blue-mine t)
+(load-theme 'moe-dark t)
 
 (pretty-mode t)
 

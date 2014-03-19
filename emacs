@@ -261,6 +261,7 @@
  '(erc-server "10.0.0.69")
  '(fringe-mode 4 nil (fringe))
  '(main-line-separator-style (quote chamfer))
+ '(org-agenda-files (quote ("~/org/todo.org")))
  '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
 
 ;; theme is the last thing to load, so if something breaks in the config, 
@@ -270,6 +271,9 @@
 (load-theme 'moe-dark t)
 
 (pretty-mode t)
+
+;; load todo-list
+(find-file "~/org/todo.org")
 
 (provide 'emacs)
 ;;; emacs ends here

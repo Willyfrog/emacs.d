@@ -241,6 +241,7 @@
 
 ; switch window
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "M-O") 'other-frame)
 
 ; diminish modes to reduce clutter
 (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
@@ -272,8 +273,8 @@
 
 (pretty-mode t)
 
-;; load todo-list
-(find-file "~/org/todo.org")
+;; open todo tasks
+(find-file (expand-file-name "~/Dropbox/org/todo.org"))
 
 (provide 'emacs)
 ;;; emacs ends here

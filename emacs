@@ -49,7 +49,6 @@
          smart-operator
          smarty-mode
          twittering-mode
-         virtualenv
          web-mode
          yasnippet
          yasnippet-config
@@ -242,6 +241,7 @@
 ; switch window
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-O") 'other-frame)
+(global-set-key (kbd "C-c o") 'switch-to-minibuffer)
 
 ; diminish modes to reduce clutter
 (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))

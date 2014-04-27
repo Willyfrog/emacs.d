@@ -225,6 +225,8 @@
 
 ;;; CUSTOM KEY-BINDINGS
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "<mouse-8>") 'next-buffer)
+(global-set-key (kbd "<mouse-9>") 'previous-buffer)
 ;; 
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)

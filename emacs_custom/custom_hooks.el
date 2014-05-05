@@ -23,6 +23,12 @@
   (fci-mode 1))
   ;;(c-set-offset 'arglist-close 0))
 
+(require 'rainbow-delimiters)
+
+(defun my-lispy-common-config ()
+  (rainbow-delimiters-mode 1)
+  )
+
 (defun my-common-lisp-mode-hook ()
   "Common lisp configuration."
   ;;(setq inferior-lisp-program "rlwrap sbcl")
@@ -30,8 +36,9 @@
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
   (require 'slime)
   (slime-setup)
-  (paredit-mode)
-  (fci-mode 1))
+  ;(paredit-mode)
+  (fci-mode 1)
+  (my-lispy-common-config))
 
 (defun my-python-mode-hook ()
   "Python configuration."
@@ -55,9 +62,11 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'nrepl-mode-hook 'paredit-mode)
 (add-hook 'php-mode-hook 'my-php-mode-hook)
-(add-hook 'hy-mode-hook 'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'hy-mode-hook 'my-lispy-common-config)
+(add-hook 'emacs-lisp-mode-hook 'my-lispy-common-config)
 (add-hook 'lisp-mode-hook 'my-common-lisp-mode-hook)
+(add-hook 'scheme-mode 'my-lispy-common-config)
+(add-hook 'quack-mode 'my-lispy-common-config)
 
 
 (provide 'custom_hooks)

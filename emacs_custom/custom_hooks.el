@@ -53,6 +53,7 @@
   (setq py-split-windows-on-execute-p nil)
   (setq py-smart-indentation t)
   (setq fill-column 80)
+  (flycheck-mode 1)
   (fci-mode 1))
 
 

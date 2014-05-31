@@ -2,9 +2,9 @@
 ;;
 ;; .emacs de Guillermo Vayá Pérez guivaya@gmail.com @Willyfrog_
 ;;
-;;; Commentary: 
+;;; Commentary:
 ;;
-;; This config file can be copied and modified. 
+;; This config file can be copied and modified.
 ;; No need to ask for permission or mention author.
 ;;
 
@@ -19,6 +19,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/el-get/elpa")
+(add-to-list 'load-path "~/Proyectos/interrupt.el")
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -29,9 +30,9 @@
       (eval-print-last-sexp))))
 
 ;; synch packages
-(setq my-el-get-packages  
-      (append  
-       '(auto-complete 
+(setq my-el-get-packages
+      (append
+       '(auto-complete
          autopair
          clojure-mode
          cl-lib
@@ -84,7 +85,7 @@
 
 ;; apply some configuration for Mac OS X only
 (if (string-equal system-type "darwin")
-    (progn 
+    (progn
 
       ;; option -> alt & command -> meta
       (setq mac-option-modifier nil
@@ -94,7 +95,7 @@
       ;; Setup PATH in darwin
       (setenv "PATH" (shell-command-to-string "source ~/.bash_profile; echo -n $PATH"))
       ;; Update exec-path with the contents of $PATH
-      (loop for path in (split-string (getenv "PATH") ":") do 
+      (loop for path in (split-string (getenv "PATH") ":") do
             (add-to-list 'exec-path path))
 
       ;; Grab other environment variables
@@ -172,7 +173,7 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; 
+;;
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (concat user-emacs-directory "places"))
@@ -211,6 +212,9 @@
 
 (require 'kill_project_buffers)
 (require 'start_gtalk)
+
+(require 'interrupt)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -232,7 +236,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "<mouse-8>") 'next-buffer)
 (global-set-key (kbd "<mouse-9>") 'previous-buffer)
-;; 
+;;
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 ;; ido mode para M-x
@@ -264,10 +268,56 @@
 (define-key sp-keymap (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
 (define-key sp-keymap (kbd "C-M-<right>") 'sp-backward-barf-sexp)
 
+(global-set-key (kbd "<f12>") 'interrupt)
+(global-set-key (kbd "S-<f12>") 'interrupt-end)
+
 ; diminish modes to reduce clutter
 (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
 (eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
 (eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
+
+; wanderlust config
+(autoload 'wl "wl" "Wanderlust" t)
+(autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
+(autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
+
+
+;; IMAP
+(setq elmo-imap4-default-server "imap.gmail.com")
+(setq elmo-imap4-default-user "guillermo.vaya@gigas.com")
+(setq elmo-imap4-default-authenticate-type 'clear)
+(setq elmo-imap4-default-port '993)
+(setq elmo-imap4-default-stream-type 'ssl)
+
+(setq elmo-imap4-use-modified-utf7 t)
+
+;; SMTP
+(setq wl-smtp-connection-type 'starttls)
+(setq wl-smtp-posting-port 587)
+(setq wl-smtp-authenticate-type "plain")
+(setq wl-smtp-posting-user "guillermo.vaya")
+(setq wl-smtp-posting-server "smtp.gmail.com")
+(setq wl-local-domain "gigas.com")
+
+(setq wl-default-folder "%inbox")
+(setq wl-default-spec "%")
+(setq wl-draft-folder "%[Gmail]/Drafts") ; Gmail IMAP
+(setq wl-trash-folder "%[Gmail]/Trash")
+
+(setq wl-folder-check-async t)
+
+(setq elmo-imap4-use-modified-utf7 t)
+
+(autoload 'wl-user-agent-compose "wl-draft" nil t)
+(if (boundp 'mail-user-agent)
+    (setq mail-user-agent 'wl-user-agent))
+(if (fboundp 'define-mail-user-agent)
+    (define-mail-user-agent
+      'wl-user-agent
+      'wl-user-agent-compose
+      'wl-draft-send
+      'wl-draft-kill
+      'mail-send-hook))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -276,7 +326,9 @@
  ;; If there is more than one, they won't work right.
  '(Linum-format "%7i ")
  '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(erc-autojoin-channels-alist (quote (("10.0.0.69" "#gigames" "#spam" "#devs"))))
  '(erc-autojoin-mode t)
+ '(erc-modules (quote (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp track)))
  '(erc-nick "guille")
  '(erc-nick-uniquifier "_")
  '(erc-notify-mode t)
@@ -286,13 +338,13 @@
  '(org-agenda-files (quote ("~/org/todo.org")))
  '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
 
-;; theme is the last thing to load, so if something breaks in the config, 
+;; theme is the last thing to load, so if something breaks in the config,
 ;; everything will be white telling me that something went wrong
 (add-to-list 'custom-theme-load-path "~/emacs.d/themes")
 ;(load-theme 'deeper-blue-mine t)
 (load-theme 'moe-dark t)
 
-(pretty-mode t)
+(global-pretty-mode t)
 
 ;; open todo tasks
 (find-file (expand-file-name "~/Dropbox/org/todo.org"))

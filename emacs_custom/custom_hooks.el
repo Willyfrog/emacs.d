@@ -40,6 +40,8 @@
   (fci-mode 1)
   (my-lispy-common-config))
 
+; eliminamos el highlight-indentation-mode de la lista a cargar
+(setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode))
 (defun my-python-mode-hook ()
   "Python configuration."
   ;; (jedi:setup)
@@ -48,6 +50,9 @@
   ;;       "--log-level" "DEBUG"))
   ;; (setq jedi:setup-keys t)
   ;; (setq jedi:complete-on-dot t)
+  (if pyvenv-virtual-env
+      (message "should load elpy");(elpy-enable)
+    (message "no virtualenv is loaded, use pyvenv-workon and enable elpy"))
   (setq py-shell-switch-buffers-on-execute-p t)
   (setq py-switch-buffers-on-execute-p t)
   (setq py-split-windows-on-execute-p nil)
@@ -71,3 +76,4 @@
 
 
 (provide 'custom_hooks)
+;;; custom_hooks.el ends here

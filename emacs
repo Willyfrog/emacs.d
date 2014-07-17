@@ -76,9 +76,6 @@
 ;(require 'ox-reveal) ;; for org-reveal
 (require 'ox-md) ;; allow for exporting to Markdown
 
-;smart-mode-line
-(setq sml/theme 'dark)
-(sml/setup)
 ;power-line
 ;(require 'powerline)
 ;(powerline-default-theme)
@@ -277,47 +274,47 @@
 (eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
 
 ; wanderlust config
-(autoload 'wl "wl" "Wanderlust" t)
-(autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
-(autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
+;; (autoload 'wl "wl" "Wanderlust" t)
+;; (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
+;; (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
 
 
 ;; IMAP
-(setq elmo-imap4-default-server "imap.gmail.com")
-(setq elmo-imap4-default-user "guillermo.vaya@gigas.com")
-(setq elmo-imap4-default-authenticate-type 'clear)
-(setq elmo-imap4-default-port '993)
-(setq elmo-imap4-default-stream-type 'ssl)
+;; (setq elmo-imap4-default-server "imap.gmail.com")
+;; (setq elmo-imap4-default-user "guillermo.vaya@gigas.com")
+;; (setq elmo-imap4-default-authenticate-type 'clear)
+;; (setq elmo-imap4-default-port '993)
+;; (setq elmo-imap4-default-stream-type 'ssl)
 
-(setq elmo-imap4-use-modified-utf7 t)
+;; (setq elmo-imap4-use-modified-utf7 t)
 
 ;; SMTP
-(setq wl-smtp-connection-type 'starttls)
-(setq wl-smtp-posting-port 587)
-(setq wl-smtp-authenticate-type "plain")
-(setq wl-smtp-posting-user "guillermo.vaya")
-(setq wl-smtp-posting-server "smtp.gmail.com")
-(setq wl-local-domain "gigas.com")
+;; (setq wl-smtp-connection-type 'starttls)
+;; (setq wl-smtp-posting-port 587)
+;; (setq wl-smtp-authenticate-type "plain")
+;; (setq wl-smtp-posting-user "guillermo.vaya")
+;; (setq wl-smtp-posting-server "smtp.gmail.com")
+;; (setq wl-local-domain "gigas.com")
 
-(setq wl-default-folder "%inbox")
-(setq wl-default-spec "%")
-(setq wl-draft-folder "%[Gmail]/Drafts") ; Gmail IMAP
-(setq wl-trash-folder "%[Gmail]/Trash")
+;; (setq wl-default-folder "%inbox")
+;; (setq wl-default-spec "%")
+;; (setq wl-draft-folder "%[Gmail]/Drafts") ; Gmail IMAP
+;; (setq wl-trash-folder "%[Gmail]/Trash")
 
-(setq wl-folder-check-async t)
+;; (setq wl-folder-check-async t)
 
-(setq elmo-imap4-use-modified-utf7 t)
+;; (setq elmo-imap4-use-modified-utf7 t)
 
-(autoload 'wl-user-agent-compose "wl-draft" nil t)
-(if (boundp 'mail-user-agent)
-    (setq mail-user-agent 'wl-user-agent))
-(if (fboundp 'define-mail-user-agent)
-    (define-mail-user-agent
-      'wl-user-agent
-      'wl-user-agent-compose
-      'wl-draft-send
-      'wl-draft-kill
-      'mail-send-hook))
+;; (autoload 'wl-user-agent-compose "wl-draft" nil t)
+;; (if (boundp 'mail-user-agent)
+;;     (setq mail-user-agent 'wl-user-agent))
+;; (if (fboundp 'define-mail-user-agent)
+;;     (define-mail-user-agent
+;;       'wl-user-agent
+;;       'wl-user-agent-compose
+;;       'wl-draft-send
+;;       'wl-draft-kill
+;;       'mail-send-hook))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -325,7 +322,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Linum-format "%7i ")
- '(custom-safe-themes (quote ("9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(custom-safe-themes (quote ("756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
  '(erc-autojoin-channels-alist (quote (("10.0.0.69" "#gigames" "#spam" "#devs"))))
  '(erc-autojoin-mode t)
  '(erc-modules (quote (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp track)))
@@ -342,8 +339,11 @@
 ;; everything will be white telling me that something went wrong
 (add-to-list 'custom-theme-load-path "~/emacs.d/themes")
 ;(load-theme 'deeper-blue-mine t)
+(require 'moe-theme)
 (load-theme 'moe-dark t)
-
+;smart-mode-line
+(setq sml/theme 'light)
+(sml/setup)
 (global-pretty-mode t)
 
 ;; open todo tasks

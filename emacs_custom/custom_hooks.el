@@ -61,6 +61,15 @@
   (flycheck-mode 1)
   (fci-mode 1))
 
+(defun my-js-mode-hook ()
+  "Javascript config"
+  (defvar preferred-javascript-indent-level 2)
+  (setq mode-name "JS2")
+  (setq-default
+   js2-basic-offset preferred-javascript-indent-level
+   js2-bounce-indent-p nil)
+  (js2-imenu-extras-setup)
+  )
 
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)
@@ -73,7 +82,8 @@
 (add-hook 'lisp-mode-hook 'my-common-lisp-mode-hook)
 (add-hook 'scheme-mode 'my-lispy-common-config)
 (add-hook 'quack-mode 'my-lispy-common-config)
-
+(add-hook 'js2-mode-hook 'my-js-mode-hook)
 
 (provide 'custom_hooks)
 ;;; custom_hooks.el ends here
+ 

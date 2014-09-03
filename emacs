@@ -122,7 +122,7 @@
 (display-battery-mode t)
 (setq inhibit-startup-message t)
 
-(require 'php-mode)
+;(require 'php-mode)
 
 ;; set major modes
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -151,7 +151,7 @@
 
 ;; probamos la carga de autocompletado
 (require 'auto-complete)
-(global-auto-complete-mode t)
+;(global-auto-complete-mode t)
 
 ;(autoload 'jedi:setup "jedi" nil t)
 
@@ -174,13 +174,6 @@
 (setq-default save-place t)
 (setq save-place-file (concat user-emacs-directory "places"))
 
-;; php lint
-(defun php-lint-file ()
-  "Lint php files."
-       (interactive)
-       (compile (format "php -l %s" (buffer-file-name))))
-;; end of php lint
-
 ;; yasnippets
 ;;(require 'yasnippet) ;; not yasnippet-bundle
 (yas-global-mode 1)
@@ -194,8 +187,8 @@
 ;;(setq-default fill-column 80)
 
 ;; linea para marcar el ancho que debería mantener
-(require 'fill-column-indicator)
-(setq fci-rule-color "darkblue")
+;;(require 'fill-column-indicator)
+;;(setq fci-rule-color "darkblue")
 ; better load on hook load with (fci-mode 1)
 ;(define-globalized-minor-mode
 ;  global-fci-mode fci-mode (lambda () (fci-mode 1)))

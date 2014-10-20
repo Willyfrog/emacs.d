@@ -26,7 +26,7 @@
   (setq fly/phpcs-phpexe "/usr/bin/php")
   (setq fly/phpcs-standard "PSR2")
   (c-set-offset 'case-label 4)
-  (auto-complete-mode t)
+  ;(auto-complete-mode t)
   ;(setq fill-column 120)
   ;(fci-mode 1)
   )
@@ -36,7 +36,7 @@
 
 (defun my-lispy-common-config ()
   (rainbow-delimiters-mode 1)
-  (auto-complete-mode t)
+  ;(auto-complete-mode t)
   )
 
 (defun my-common-lisp-mode-hook ()
@@ -80,7 +80,7 @@
    js2-basic-offset preferred-javascript-indent-level
    js2-bounce-indent-p nil)
   (js2-imenu-extras-setup)
-  (auto-complete-mode t)
+;  (auto-complete-mode t)
   )
 
 ;; hooks para cargar cosas extra con los modes

@@ -14,48 +14,48 @@
 ;;; Code:
 (add-to-list 'load-suffixes ".el.gpg") ;; allow for encrypted .el files
 (add-to-list 'load-path "~/emacs.d/emacs_custom/")
-(add-to-list 'load-path "~/emacs.d/hy-mode")
-(require 'hy-mode)
+;(add-to-list 'load-path "~/emacs.d/hy-mode")
+;(require 'hy-mode)
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(add-to-list 'load-path "~/.emacs.d/el-get/elpa")
+;(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;(add-to-list 'load-path "~/.emacs.d/el-get/elpa")
 (add-to-list 'load-path "~/Proyectos/interrupt.el")
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
+;; (unless (require 'el-get nil 'noerror)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+;;     (let (el-get-master-branch)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp))))
 
 ;; synch packages
-(setq my-el-get-packages
-      (append
-       '(auto-complete
-         autopair
-         clojure-mode
-         cl-lib
-	 cider
-         deferred
-         fill-column-indicator
-         json
-         magit
-         paredit
-         php-mode
-         pkgbuild-mode
-         popup
-         rst-mode
-         smart-operator
-         smarty-mode
-         twittering-mode
-         web-mode
-         yasnippet
-         yasnippet-config
-         )))
+;; (setq my-el-get-packages
+;;       (append
+;;        '(auto-complete
+;;          autopair
+;;          clojure-mode
+;;          cl-lib
+;; 	 cider
+;;          deferred
+;;          fill-column-indicator
+;;          json
+;;          magit
+;;          paredit
+;;          php-mode
+;;          pkgbuild-mode
+;;          popup
+;;          rst-mode
+;;          smart-operator
+;;          smarty-mode
+;;          twittering-mode
+;;          web-mode
+;;          yasnippet
+;;          yasnippet-config
+;;          )))
 
-(el-get 'sync my-el-get-packages) ;; descomentar para instalar
-(el-get 'sync)
+;(el-get 'sync my-el-get-packages) ;; descomentar para instalar
+;(el-get 'sync)
 
 ;; non el-get
 (require 'package)
@@ -73,42 +73,41 @@
 
 (setq org-log-done t)
 ;(require 'ox-reveal) ;; for org-reveal
-(require 'ox-md) ;; allow for exporting to Markdown
-
-;power-line
-;(require 'powerline)
-;(powerline-default-theme)
+;(require 'ox-md) ;; allow for exporting to Markdown
 
 ;; apply some configuration for Mac OS X only
-(if (string-equal system-type "darwin")
-    (progn
+;; (if (string-equal system-type "darwin")
+;;     (progn
 
-      ;; option -> alt & command -> meta
-      (setq mac-option-modifier nil
-            mac-command-modifier 'meta
-            x-select-enable-clipboard t)
+;;       ;; option -> alt & command -> meta
+;;       (setq mac-option-modifier nil
+;;             mac-command-modifier 'meta
+;;             x-select-enable-clipboard t)
 
-      ;; Setup PATH in darwin
-      (setenv "PATH" (shell-command-to-string "source ~/.bash_profile; echo -n $PATH"))
-      ;; Update exec-path with the contents of $PATH
-      (loop for path in (split-string (getenv "PATH") ":") do
-            (add-to-list 'exec-path path))
+;;       ;; Setup PATH in darwin
+;;       (setenv "PATH" (shell-command-to-string "source ~/.bash_profile; echo -n $PATH"))
+;;       ;; Update exec-path with the contents of $PATH
+;;       (loop for path in (split-string (getenv "PATH") ":") do
+;;             (add-to-list 'exec-path path))
 
-      ;; Grab other environment variables
-      (loop for var in (split-string (shell-command-to-string "source ~/.bash_profile; env")) do
-            (let* ((pair (split-string var "="))
-                   (key (car pair))
-                   (value (cadr pair)))
-              (unless (getenv key)
-                (setenv key value))))
-      ))
+;;       ;; Grab other environment variables
+;;       (loop for var in (split-string (shell-command-to-string "source ~/.bash_profile; env")) do
+;;             (let* ((pair (split-string var "="))
+;;                    (key (car pair))
+;;                    (value (cadr pair)))
+;;               (unless (getenv key)
+;;                 (setenv key value))))
+;;       ))
 
 ;;No tool bar mode
 (tool-bar-mode -1)
 ;;No menu bar mode
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 ;;No scrollbar
 (scroll-bar-mode -1)
+(display-battery-mode t)
+(setq inhibit-startup-message t)
+
 ;;IDO
 (require 'ido)
 (ido-mode t)
@@ -119,8 +118,6 @@
 (show-paren-mode t)
 (setq show-paren-style 'expression)
 (setq show-paren-delay 0)
-(display-battery-mode t)
-(setq inhibit-startup-message t)
 
 ;(require 'php-mode)
 
@@ -132,7 +129,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.hy\\'" . hy-mode))
+;(add-to-list 'auto-mode-alist '("\\.hy\\'" . hy-mode))
 (add-to-list 'auto-mode-alist '("\\emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.lisp\\'" . lisp-mode))
@@ -150,20 +147,20 @@
 (setq tab-width 4)          ;; 4 espacios por tab
 
 ;; probamos la carga de autocompletado
-(require 'auto-complete)
+;(require 'auto-complete)
 ;(global-auto-complete-mode t)
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
-;(autoload 'jedi:setup "jedi" nil t)
-
-(setq twittering-use-master-password t)
+;(setq twittering-use-master-password t)
 
 ;; habilitar acentos
 (require 'iso-transl)
 (put 'scroll-left 'disabled nil)
 
 ;; shift+direction moves to that window
-(when (fboundp 'windmove-default-keybindings)
-      (windmove-default-keybindings))
+;; (when (fboundp 'windmove-default-keybindings)
+;;       (windmove-default-keybindings))
 
 ;; make buffernames unique
 (require 'uniquify)
@@ -175,7 +172,7 @@
 (setq save-place-file (concat user-emacs-directory "places"))
 
 ;; yasnippets
-;;(require 'yasnippet) ;; not yasnippet-bundle
+(require 'yasnippet) ;; not yasnippet-bundle
 (yas-global-mode 1)
 
 
@@ -261,9 +258,9 @@
 (global-set-key (kbd "S-<f12>") 'interrupt-end)
 
 ; diminish modes to reduce clutter
-(eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
-(eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
-(eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
+;; (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
+;; (eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
+;; (eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
 
 ; wanderlust config
 ;; (autoload 'wl "wl" "Wanderlust" t)
@@ -314,29 +311,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Linum-format "%7i ")
- '(custom-safe-themes (quote ("cdf488af2fbc0735c3eeff42e77bc62cb14bd869a89c6a27a854e2c4a50c9ad2" "9bae7be09c7eba31130778f79b25ab5dc0fcf2af30588a7400343d99da3186e4" "10de032bf7ffb90f4d3ee9888c0dd1aa65549c00e5a6e22b5d606b0bbb1354ce" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(custom-safe-themes (quote ("3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "cdf488af2fbc0735c3eeff42e77bc62cb14bd869a89c6a27a854e2c4a50c9ad2" "9bae7be09c7eba31130778f79b25ab5dc0fcf2af30588a7400343d99da3186e4" "10de032bf7ffb90f4d3ee9888c0dd1aa65549c00e5a6e22b5d606b0bbb1354ce" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
  '(display-battery-mode t)
- '(erc-autojoin-channels-alist (quote (("10.0.0.69" "#gigames" "#spam" "#devs"))))
- '(erc-autojoin-mode t)
- '(erc-modules (quote (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp track)))
- '(erc-nick "guille")
- '(erc-nick-uniquifier "_")
- '(erc-notify-mode t)
- '(erc-server "10.0.0.69")
  '(fringe-mode 4 nil (fringe))
  '(main-line-separator-style (quote chamfer))
  '(menu-bar-mode nil)
  '(org-agenda-files (quote ("~/org/todo.org")))
- '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api"))))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
 
 ;; theme is the last thing to load, so if something breaks in the config,
 ;; everything will be white telling me that something went wrong
 (add-to-list 'custom-theme-load-path "~/emacs.d/themes")
 ;(load-theme 'deeper-blue-mine t)
-(require 'moe-theme)
-(load-theme 'moe-dark t)
+(load-theme 'sanityinc-solarized-light t)
 ;smart-mode-line
 (setq sml/theme 'light)
 (sml/setup)

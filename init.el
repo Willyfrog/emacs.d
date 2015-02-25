@@ -59,10 +59,12 @@
 
 ;; non el-get
 (require 'package)
+
+;; gnu es necesario para emacs < 24
+;; (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; org-mode
 ;(require 'org-install)
@@ -206,7 +208,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Mensch" :foundry "bitstream" :slant normal :weight normal :height 128 :width normal)))))
+ )
 
 
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
@@ -217,6 +219,10 @@
 
 ; ace jump mode
 (autoload 'ace-jump-mode "ace-jump-mode")
+
+;; switch-window
+(require 'switch-window)
+(setq switch-window-shortcut-style 'alphabet)
 
 ;;; CUSTOM KEY-BINDINGS
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -239,6 +245,7 @@
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-O") 'other-frame)
 (global-set-key (kbd "C-c o") 'switch-to-minibuffer)
+(global-set-key (kbd "C-x o") 'switch-window)
 
 ; smart parens key bindings
 (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
@@ -256,6 +263,8 @@
 
 (global-set-key (kbd "<f12>") 'interrupt)
 (global-set-key (kbd "S-<f12>") 'interrupt-end)
+
+;; (define-key php-mode-map (kbd "C-c C-y") 'yas/create-php-snippet)
 
 ; diminish modes to reduce clutter
 ;; (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
@@ -311,19 +320,35 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Linum-format "%7i ")
- '(custom-safe-themes (quote ("3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "cdf488af2fbc0735c3eeff42e77bc62cb14bd869a89c6a27a854e2c4a50c9ad2" "9bae7be09c7eba31130778f79b25ab5dc0fcf2af30588a7400343d99da3186e4" "10de032bf7ffb90f4d3ee9888c0dd1aa65549c00e5a6e22b5d606b0bbb1354ce" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+ '(custom-safe-themes
+   (quote
+    ("208ace27fe9ce44edc36ed0f1b6149d389b6276827ad309b54d93a529d4cfb33" "df817d33ddab9ef51a69b05bcf464a9c8719dde1e5e669bb3c6719884e7ae34e" "d401b0920023533c5de1553d27e9d4669ae088f771cf2736108870f783af0cc0" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "cdf488af2fbc0735c3eeff42e77bc62cb14bd869a89c6a27a854e2c4a50c9ad2" "9bae7be09c7eba31130778f79b25ab5dc0fcf2af30588a7400343d99da3186e4" "10de032bf7ffb90f4d3ee9888c0dd1aa65549c00e5a6e22b5d606b0bbb1354ce" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
  '(display-battery-mode t)
  '(fringe-mode 4 nil (fringe))
  '(main-line-separator-style (quote chamfer))
  '(menu-bar-mode nil)
  '(org-agenda-files (quote ("~/org/todo.org")))
- '(safe-local-variable-values (quote ((virtualenv-default-directory . "~/Proyectos/hylink") (virtualenv-workon . "hylink") (virtualenv-default-directory . "~/Proyectos/gigas_api") (virtualenv-workon . "api")))))
+ '(safe-local-variable-values
+   (quote
+    ((virtualenv-default-directory . "~/Proyectos/hylink")
+     (virtualenv-workon . "hylink")
+     (virtualenv-default-directory . "~/Proyectos/gigas_api")
+     (virtualenv-workon . "api")))))
 
 ;; theme is the last thing to load, so if something breaks in the config,
 ;; everything will be white telling me that something went wrong
 (add-to-list 'custom-theme-load-path "~/emacs.d/themes")
-;(load-theme 'deeper-blue-mine t)
-(load-theme 'sanityinc-solarized-light t)
+;;(load-theme 'deeper-blue-mine t)
+;;(load-theme 'sanityinc-solarized-light t)
+(load-theme 'leuven t)
+;; cargamos moe-theme
+;; (require 'moe-theme)
+;; ;; Resize titles
+;; (setq moe-theme-resize-markdown-title '(2.0 1.7 1.5 1.3 1.0 1.0))
+;; (setq moe-theme-resize-org-title '(2.2 1.8 1.6 1.4 1.2 1.0 1.0 1.0 1.0))
+;; (setq moe-theme-resize-rst-title '(2.0 1.7 1.5 1.3 1.1 1.0))
+;; (moe-light)
+
 ;smart-mode-line
 (setq sml/theme 'light)
 (sml/setup)

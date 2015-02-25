@@ -83,6 +83,20 @@
 ;  (auto-complete-mode t)
   )
 
+(defun my-clojure-mode-hook ()
+  ;; cider
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  (setq cider-repl-pop-to-buffer-on-connect t)
+  (setq cider-popup-stacktraces t)
+  (setq cider-repl-popup-stacktraces t)
+  (setq cider-auto-select-error-buffer t)
+  (setq cider-repl-history-file "~/.emacs.d/cider-history")
+  (setq cider-repl-wrap-history t)
+  (add-hook 'cider-repl-mode-hook 'subword-mode)
+  (add-hook 'cider-repl-mode-hook 'paredit-mode)
+  (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+  (my-lispy-common-config))
+
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 (add-hook 'clojure-mode-hook 'my-lispy-common-config)

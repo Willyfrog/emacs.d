@@ -1,0 +1,9 @@
+# name: var $...;
+# key: classvar
+# --
+/**
+ * undocumented class variable
+ *
+ * @var string
+ **/
+var $varname;

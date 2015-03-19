@@ -1,0 +1,6 @@
+# name: case 'var': ...
+# key: case
+# --
+case 'var':
+	# code...
+	break;

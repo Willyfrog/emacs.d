@@ -1,0 +1,6 @@
+# name: function __construct(...) {...}
+# key: constr
+# --
+function __construct($foo = null) {
+	$this->foo = $foo;
+}

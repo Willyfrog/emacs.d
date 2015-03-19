@@ -1,0 +1,12 @@
+# name: class classname {...}
+# key: class
+# --
+/**
+ * undocumented class
+ *
+ * @package default
+ * @author 
+ **/
+class classname
+{
+} // END class 

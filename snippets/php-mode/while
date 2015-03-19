@@ -1,0 +1,6 @@
+# name: while ($i <= 10) {...}
+# key: exec
+# --
+while ($i <= 10) {
+	# code...
+}

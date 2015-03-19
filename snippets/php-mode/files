@@ -1,0 +1,4 @@
+# name: $_FILES[...]
+# key: files
+# --
+$_FILES['variable']

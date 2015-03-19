@@ -1,0 +1,4 @@
+# name: $_POST[...]
+# key: post
+# --
+$_POST['variable']

@@ -1,0 +1,6 @@
+# name: foreach (...) { #code.. }
+# key: for
+# --
+foreach ($variable as $key => $value) {
+	# code...
+}

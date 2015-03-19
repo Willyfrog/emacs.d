@@ -1,0 +1,4 @@
+# name: $GLOBALS[...] = ...;
+# key: glob
+# --
+$GLOBALS['variable'] = something;

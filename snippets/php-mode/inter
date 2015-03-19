@@ -1,0 +1,12 @@
+# name: interface interface_name {...}
+# key: inter
+# --
+/**
+ * undocumented class
+ *
+ * @package default
+ * @author 
+ **/
+interface interface_name
+{
+} // END interface

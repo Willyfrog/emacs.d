@@ -1,0 +1,6 @@
+# name: do {...} while ($i <= 10);
+# key: do
+# --
+do {
+	# code...
+} while ($i <= 10);

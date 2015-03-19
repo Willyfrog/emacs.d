@@ -1,0 +1,4 @@
+# name: $_SESSION[...]
+# key: sess
+# --
+$_SESSION['variable']

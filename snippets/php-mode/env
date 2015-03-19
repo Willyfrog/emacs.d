@@ -1,0 +1,4 @@
+# name: $_ENV[...]
+# key: env
+# --
+$_ENV['variable']

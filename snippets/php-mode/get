@@ -1,0 +1,4 @@
+# name: $_GET[...]
+# key: get
+# --
+$_GET['variable']

@@ -1,0 +1,4 @@
+# name: $arrayName = array('' => ,)
+# key: arr
+# --
+$arrayName = array('' => , );

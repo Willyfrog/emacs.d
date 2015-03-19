@@ -1,0 +1,14 @@
+# name: class classname extends AnotherClass {...}
+# key: class
+# --
+/**
+* 
+*/
+class ClassName extends AnotherClass
+{
+	
+	function __construct(argument)
+	{
+		# code...
+	}
+}

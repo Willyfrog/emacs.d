@@ -1,0 +1,11 @@
+# name: function funcname() {...}
+# key: func
+# --
+/**
+ * $1
+ * @param $2
+ * @return ${3:void}
+ **/
+function $1($2)
+{
+}

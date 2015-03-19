@@ -76,10 +76,12 @@
   "Javascript config"
   (defvar preferred-javascript-indent-level 2)
   (setq mode-name "JS2")
+  (setq js2-highlight-level 3)
   (setq-default
    js2-basic-offset preferred-javascript-indent-level
    js2-bounce-indent-p nil)
   (js2-imenu-extras-setup)
+  (flycheck-mode 1)
 ;  (auto-complete-mode t)
   )
 

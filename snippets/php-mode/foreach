@@ -1,0 +1,6 @@
+# name: foreach (...) { #code.. }
+# key: foreach
+# --
+foreach ($1 as $(2:key)[=> $(3:value)]) {
+        
+}

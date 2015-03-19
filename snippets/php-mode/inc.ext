@@ -1,0 +1,4 @@
+# name: include_once 'file'
+# key: incl
+# --
+include_once 'file';

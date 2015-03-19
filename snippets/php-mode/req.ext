@@ -1,0 +1,4 @@
+# name: require_once 'file'
+# key: req
+# --
+require_once 'file';

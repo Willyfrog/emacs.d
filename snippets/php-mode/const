@@ -1,0 +1,7 @@
+# name: define(...,...)
+# key: const
+# --
+/**
+ * undocumented constant
+ **/
+define(, );

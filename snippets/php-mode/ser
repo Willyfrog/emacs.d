@@ -1,0 +1,4 @@
+# name: $_SERVER[...]
+# key: ser
+# --
+$_SERVER['variable']

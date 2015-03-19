@@ -1,0 +1,10 @@
+# name: if (cond) {...} elseif(cond) {...} else {...}
+# key: if
+# --
+if(cond) {
+	//code block
+} elseif(cond) {
+	//code block
+} else {
+	//code block
+}

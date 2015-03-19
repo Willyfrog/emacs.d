@@ -1,0 +1,6 @@
+# name: elseif(cond) {...}
+# key: elseif
+# --
+elseif(cond) {
+	//code block
+}

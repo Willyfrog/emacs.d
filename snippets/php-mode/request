@@ -1,0 +1,4 @@
+# name: $_REQUEST[...]
+# key: requ
+# --
+$_REQUEST['variable']

@@ -1,0 +1,4 @@
+# name: echo ...
+# key: echo
+# --
+echo "string";

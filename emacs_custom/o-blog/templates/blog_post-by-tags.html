@@ -1,0 +1,33 @@
+<lisp>(ob:insert-template "page_header.html")</lisp>
+<div class="article">
+  <div class="article-content">
+    <div>
+      <nav>
+	<p class="lead"><a href="<lisp>(ob:path-to-root)</lisp>/tags/index.html">Tag cloud</a></p>
+      </nav>
+    </div>
+    <nav class="tag-detail">
+      <div class="multicolumn3">
+	<lisp>
+(loop for TAG in TAGS
+      do (progn
+(insert (format "<h3><a href=\"%s/tags/%s.xml\"><i class=\"fa fa-rss\"></i></a> <a href=\"%s/tags/%s.html\">%s</a></h3><ul>"
+	    (ob:path-to-root)
+	    (ob:get 'safe TAG)
+	    (ob:path-to-root)
+	    (ob:get 'safe TAG)
+	    (ob:get 'display TAG)))
+
+	    
+	   (loop for post in POSTS
+		 do (when (member (ob:tags-safe TAG) (mapcar 'ob:tags-safe (ob:post-tags post)))
+		      (insert (format "<li><a href=\"%s/%s\">%s</a></li>"
+				      (ob:path-to-root) (ob:post-htmlfile post) (ob:post-title post)
+				      ))))
+	   (insert "</ul>")))
+	</lisp>
+      </div>
+    </nav>
+  </div>
+</div>
+<lisp>(ob:insert-template "page_footer.html")</lisp>

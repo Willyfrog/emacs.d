@@ -21,23 +21,23 @@
        (format "phpcs --report=emacs --standard=PSR2 %s"
                (buffer-file-name)))
   ;(require 'flyphpcs)
-  (setq fly/phpcs-phpcs-dir "/usr/bin")
-  (setq fly/phpcs-phpcs-phpinc "/usr/include/php")
-  (setq fly/phpcs-phpexe "/usr/bin/php")
-  (setq fly/phpcs-standard "PSR2")
+  ;; (setq fly/phpcs-phpcs-dir "/usr/share/pear/PHP/CodeSniffer")
+  ;; (setq fly/phpcs-phpcs-phpinc "/usr/include/php")
+  ;; (setq fly/phpcs-phpexe "/usr/bin/php")
+  ;; (setq fly/phpcs-standard "PSR2")
+  (setq flycheck-phpcs-standard "PSR2")
   (c-set-offset 'case-label 4)
+  (flycheck-mode 1)
+  ;(flymake-mode-on)
   ;(auto-complete-mode t)
   ;(setq fill-column 120)
   ;(fci-mode 1)
   )
-  ;;(c-set-offset 'arglist-close 0))
 
 (require 'rainbow-delimiters)
 
 (defun my-lispy-common-config ()
-  (rainbow-delimiters-mode 1)
-  ;(auto-complete-mode t)
-  )
+  (rainbow-delimiters-mode 1))
 
 (defun my-common-lisp-mode-hook ()
   "Common lisp configuration."
@@ -67,10 +67,7 @@
   (setq py-switch-buffers-on-execute-p t)
   (setq py-split-windows-on-execute-p nil)
   (setq py-smart-indentation t)
-  (setq fill-column 80)
-  ;(flycheck-mode 1)
-  ;(fci-mode 1)
-  )
+  (setq fill-column 80))
 
 (defun my-js-mode-hook ()
   "Javascript config"
@@ -81,9 +78,7 @@
    js2-basic-offset preferred-javascript-indent-level
    js2-bounce-indent-p nil)
   (js2-imenu-extras-setup)
-  (flycheck-mode 1)
-;  (auto-complete-mode t)
-  )
+  (flycheck-mode 1))
 
 (defun my-clojure-mode-hook ()
   ;; cider

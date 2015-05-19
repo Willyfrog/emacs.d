@@ -327,16 +327,49 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(ansi-term-color-vector
+   [unspecified "#FAFAFA" "#D50000" "#66BB6A" "#FFA000" "#42A5F5" "#7E57C2" "#0097A7" "#546E7A"])
  '(custom-safe-themes
    (quote
-    ("4dd1b115bc46c0f998e4526a3b546985ebd35685de09bc4c84297971c822750e" "629d9ba6189ae9b42bb8d49ee57d23e6ea7cc697f1593c17ecf78bba38a65459" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3fd36152f5be7e701856c3d817356f78a4b1f4aefbbe8bbdd1ecbfa557b50006" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "208ace27fe9ce44edc36ed0f1b6149d389b6276827ad309b54d93a529d4cfb33" "df817d33ddab9ef51a69b05bcf464a9c8719dde1e5e669bb3c6719884e7ae34e" "d401b0920023533c5de1553d27e9d4669ae088f771cf2736108870f783af0cc0" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "cdf488af2fbc0735c3eeff42e77bc62cb14bd869a89c6a27a854e2c4a50c9ad2" "9bae7be09c7eba31130778f79b25ab5dc0fcf2af30588a7400343d99da3186e4" "10de032bf7ffb90f4d3ee9888c0dd1aa65549c00e5a6e22b5d606b0bbb1354ce" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
+    ("cf205b711e61963020e2d1561e87cdbe7727679b58af25dcabfe5073572b16f0" "90e4b4a339776e635a78d398118cb782c87810cb384f1d1223da82b612338046" "70f5a47eb08fe7a4ccb88e2550d377ce085fedce81cf30c56e3077f95a2909f2" "5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" "c3e6b52caa77cb09c049d3c973798bc64b5c43cc437d449eacf35b3e776bf85c" "4dd1b115bc46c0f998e4526a3b546985ebd35685de09bc4c84297971c822750e" "629d9ba6189ae9b42bb8d49ee57d23e6ea7cc697f1593c17ecf78bba38a65459" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3fd36152f5be7e701856c3d817356f78a4b1f4aefbbe8bbdd1ecbfa557b50006" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "208ace27fe9ce44edc36ed0f1b6149d389b6276827ad309b54d93a529d4cfb33" "df817d33ddab9ef51a69b05bcf464a9c8719dde1e5e669bb3c6719884e7ae34e" "d401b0920023533c5de1553d27e9d4669ae088f771cf2736108870f783af0cc0" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "cdf488af2fbc0735c3eeff42e77bc62cb14bd869a89c6a27a854e2c4a50c9ad2" "9bae7be09c7eba31130778f79b25ab5dc0fcf2af30588a7400343d99da3186e4" "10de032bf7ffb90f4d3ee9888c0dd1aa65549c00e5a6e22b5d606b0bbb1354ce" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" "9b4f4a04c1770e7062bca28ab1a82f58c0ee18c4be74a98a85502fa7acf5bc89" "e80a0a5e1b304eb92c58d0398464cd30ccbc3622425b6ff01eea80e44ea5130e" "427234e4b45350b4159575f1ac72860c32dce79bb57a29a196b9cfb9dd3554d9" "5dfacaf380068d9ed06e0872a066a305ab6a1217f25c3457b640e76c98ae20e6" "99aae8e9489f7117284238c1cb0a1136147161e4c007c579bf28418603d96a5c" default)))
  '(display-battery-mode t)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(evil-emacs-state-cursor (quote ("#D50000" bar)))
+ '(evil-insert-state-cursor (quote ("#D50000" hbar)))
+ '(evil-normal-state-cursor (quote ("#FFA000" box)))
+ '(evil-visual-state-cursor (quote ("#66BB6A" box)))
  '(fci-rule-color "#383838")
  '(fringe-mode 4 nil (fringe))
+ '(highlight-symbol-colors
+   (quote
+    ("#FFA000" "#66BB6A" "#0097A7" "#42A5F5" "#7E57C2" "#D84315")))
+ '(highlight-symbol-foreground-color "#546E7A")
+ '(highlight-tail-colors
+   (if
+       (eq variant
+           (quote light))
+       (quote
+        (("#FF5722" . 0)
+         ("#FFA000" . 10)
+         ("#FFD600" . 30)
+         ("#f2f2f2" . 60)
+         ("#FAFAFA" . 80)))
+     (quote
+      (("#F8BBD0" . 0)
+       ("#EC407A" . 10)
+       ("#B388FF" . 30)
+       ("#f2f2f2" . 60)
+       ("#FAFAFA" . 80)))))
+ '(linum-format " %6d ")
+ '(main-line-color1 "#222232")
+ '(main-line-color2 "#333343")
  '(main-line-separator-style (quote chamfer))
  '(menu-bar-mode nil)
  '(org-agenda-files (quote ("~/org/todo.org")))
+ '(pos-tip-background-color "#ffffff")
+ '(pos-tip-foreground-color "#78909C")
+ '(powerline-color1 "#222232")
+ '(powerline-color2 "#333343")
  '(safe-local-variable-values
    (quote
     ((virtualenv-default-directory . "~/Proyectos/hylink")
@@ -344,6 +377,7 @@
      (virtualenv-default-directory . "~/Proyectos/gigas_api")
      (virtualenv-workon . "api"))))
  '(show-paren-mode t)
+ '(tabbar-background-color "#ffffff")
  '(tool-bar-mode nil)
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map

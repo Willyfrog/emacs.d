@@ -13,13 +13,13 @@
 
 ;;; Code:
 (add-to-list 'load-suffixes ".el.gpg") ;; allow for encrypted .el files
-(add-to-list 'load-path "~/emacs.d/emacs_custom/")
+(add-to-list 'load-path "~/.emacs.d/emacs_custom/")
 ;(add-to-list 'load-path "~/emacs.d/hy-mode")
 ;(require 'hy-mode)
 
 ;(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 ;(add-to-list 'load-path "~/.emacs.d/el-get/elpa")
-(add-to-list 'load-path "~/Proyectos/interrupt.el")
+;(add-to-list 'load-path "~/Proyectos/interrupt.el")
 
 ;; (unless (require 'el-get nil 'noerror)
 ;;   (with-current-buffer
@@ -204,7 +204,7 @@
 (require 'kill_project_buffers)
 (require 'start_gtalk)
 
-(require 'interrupt)
+;(require 'interrupt)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -264,8 +264,8 @@
 (define-key sp-keymap (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
 (define-key sp-keymap (kbd "C-M-<right>") 'sp-backward-barf-sexp)
 
-(global-set-key (kbd "<f12>") 'interrupt)
-(global-set-key (kbd "S-<f12>") 'interrupt-end)
+;(global-set-key (kbd "<f12>") 'interrupt)
+;(global-set-key (kbd "S-<f12>") 'interrupt-end)
 
 ;; (define-key php-mode-map (kbd "C-c C-y") 'yas/create-php-snippet)
 

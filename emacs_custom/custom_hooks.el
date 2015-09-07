@@ -94,6 +94,8 @@
   (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
   (my-lispy-common-config))
 
+(require 'my_go)
+
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 (add-hook 'clojure-mode-hook 'my-lispy-common-config)
@@ -106,6 +108,7 @@
 (add-hook 'scheme-mode 'my-lispy-common-config)
 (add-hook 'quack-mode 'my-lispy-common-config)
 (add-hook 'js2-mode-hook 'my-js-mode-hook)
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (provide 'custom_hooks)
 ;;; custom_hooks.el ends here

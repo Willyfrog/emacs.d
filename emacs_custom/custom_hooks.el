@@ -95,20 +95,22 @@
   (my-lispy-common-config))
 
 (require 'my_go)
+(require 'my_scheme)
 
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)
-(add-hook 'clojure-mode-hook 'my-lispy-common-config)
+(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'nrepl-mode-hook 'my-lispy-common-config)
 (add-hook 'php-mode-hook 'my-php-mode-hook)
 (add-hook 'hy-mode-hook 'my-lispy-common-config)
 (add-hook 'emacs-lisp-mode-hook 'my-lispy-common-config)
 (add-hook 'lisp-mode-hook 'my-common-lisp-mode-hook)
-(add-hook 'scheme-mode 'my-lispy-common-config)
+(add-hook 'scheme-mode 'my-scheme-mode-hook)
 (add-hook 'quack-mode 'my-lispy-common-config)
 (add-hook 'js2-mode-hook 'my-js-mode-hook)
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+(add-hook 'elixir-mode-hook 'alchemist-mode)
 
 (provide 'custom_hooks)
 ;;; custom_hooks.el ends here

@@ -14,6 +14,9 @@
 ;;; Code:
 (add-to-list 'load-suffixes ".el.gpg") ;; allow for encrypted .el files
 (add-to-list 'load-path "~/.emacs.d/emacs_custom/")
+;;; add to the path anything that comes from homebrew
+(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
 ;(add-to-list 'load-path "~/emacs.d/hy-mode")
 ;(require 'hy-mode)
 
@@ -247,7 +250,7 @@
 ;; ace-jump
 ;; (global-set-key (kbd "C-c C-s") 'ace-jump-mode)
 ;; avy
-(global-set-key (kbd "M-s a") 'avy-goto-char)
+(global-set-key (kbd "C-c C-s") 'avy-goto-char)
 ; expand region with C-=
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -410,6 +413,12 @@
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3"))
+
+;; mail configuration
+(require 'my-mail)
+
+;; sandwich
+(require 'sandwich)
 
 ;; theme is the last thing to load, so if something breaks in the config,
 ;; everything will be white telling me that something went wrong

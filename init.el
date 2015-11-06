@@ -82,7 +82,21 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+
+;; magit
+(global-set-key (kbd "C-c m s") 'magit-status)
+(global-set-key (kbd "C-c m l") 'magit-log-head)
+
+(setq org-directory "~/Dropbox/org")
+(setq org-work-directory "~/Dropbox/tkt_org")
 (setq org-log-done t)
+(setq org-agenda-files (list (concat org-directory "/todo.org")
+                             (concat org-work-directory "/ticketea.org")))
+(setq diary-file (concat org-directory "/diary"))
+(setq org-agenda-include-diary t)
+(setq org-default-notes-file (concat org-directory "/notas/varios.org"))
+
+
 ;(require 'ox-reveal) ;; for org-reveal
 ;(require 'ox-md) ;; allow for exporting to Markdown
 
@@ -250,7 +264,10 @@
 ;; ace-jump
 ;; (global-set-key (kbd "C-c C-s") 'ace-jump-mode)
 ;; avy
-(global-set-key (kbd "C-c C-s") 'avy-goto-char)
+;(global-set-key (kbd "C-c C-s") 'avy-goto-char)
+(require 'ace-isearch)
+(global-ace-isearch-mode +1)
+
 ; expand region with C-=
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -283,49 +300,6 @@
 ;; (eval-after-load "projectile-mode" '(diminish 'projectile-mode "Pro"))
 ;; (eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode "+"))
 ;; (eval-after-load "abbrev-mode" '(diminish 'abbrev-mode "ab."))
-
-; wanderlust config
-;; (autoload 'wl "wl" "Wanderlust" t)
-;; (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
-;; (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
-
-
-;; IMAP
-;; (setq elmo-imap4-default-server "imap.gmail.com")
-;; (setq elmo-imap4-default-user "guillermo.vaya@gigas.com")
-;; (setq elmo-imap4-default-authenticate-type 'clear)
-;; (setq elmo-imap4-default-port '993)
-;; (setq elmo-imap4-default-stream-type 'ssl)
-
-;; (setq elmo-imap4-use-modified-utf7 t)
-
-;; SMTP
-;; (setq wl-smtp-connection-type 'starttls)
-;; (setq wl-smtp-posting-port 587)
-;; (setq wl-smtp-authenticate-type "plain")
-;; (setq wl-smtp-posting-user "guillermo.vaya")
-;; (setq wl-smtp-posting-server "smtp.gmail.com")
-;; (setq wl-local-domain "gigas.com")
-
-;; (setq wl-default-folder "%inbox")
-;; (setq wl-default-spec "%")
-;; (setq wl-draft-folder "%[Gmail]/Drafts") ; Gmail IMAP
-;; (setq wl-trash-folder "%[Gmail]/Trash")
-
-;; (setq wl-folder-check-async t)
-
-;; (setq elmo-imap4-use-modified-utf7 t)
-
-;; (autoload 'wl-user-agent-compose "wl-draft" nil t)
-;; (if (boundp 'mail-user-agent)
-;;     (setq mail-user-agent 'wl-user-agent))
-;; (if (fboundp 'define-mail-user-agent)
-;;     (define-mail-user-agent
-;;       'wl-user-agent
-;;       'wl-user-agent-compose
-;;       'wl-draft-send
-;;       'wl-draft-kill
-;;       'mail-send-hook))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -377,7 +351,6 @@
  '(main-line-separator-style (quote chamfer))
  '(menu-bar-mode nil)
  '(ns-right-alternate-modifier (quote none))
- '(org-agenda-files (quote ("~/org/todo.org")))
  '(pos-tip-background-color "#ffffff")
  '(pos-tip-foreground-color "#78909C")
  '(powerline-color1 "#222232")
@@ -415,7 +388,7 @@
  '(vc-annotate-very-old-color "#DC8CC3"))
 
 ;; mail configuration
-(require 'my-mail)
+;; (require 'my-mail) ;; not used anymore
 
 ;; sandwich
 (require 'sandwich)

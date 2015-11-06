@@ -34,28 +34,61 @@
       (error "No email account found"))))
 
 ;; ask for account when composing mail
-(add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
 
-(defvar my-mu4e-account-alist
+;;; Preserved just in case it ever gets solved
+;; (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+
+;; (defvar my-mu4e-account-alist
+;;   '(("private"
+;;      (user-mail-address  "guivaya@gmail.com")
+;;      (user-full-name     "Guillermo Vayá Pérez")
+;;      (mu4e-sent-folder   "/guivaya/[Gmail].Sent Mail")
+;;      (mu4e-drafts-folder "/guivaya/[Gmail].Drafts")
+;;      (mu4e-trash-folder  "/guivaya/[Gmail].Trash")
+;;      (mu4e-refile-folder "/guivaya/[Gmail].All Mail")
+;;      )
+;;     ("work"
+;;      (user-mail-address  "guillermo.vaya@ticketea.com")
+;;      (mu4e-sent-folder   "/ticketea/[Gmail].Enviados")
+;;      (mu4e-drafts-folder "/ticketea/[Gmail].Borradores")
+;;      (mu4e-trash-folder  "/ticketea/[Gmail].Papelera")
+;;      (mu4e-refile-folder "/ticketea/[Gmail].Todos")
+;;      )))
+
+;; (setq mu4e-user-mail-address-list
+;;       (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
+;;               my-mu4e-account-alist))
+;;; End preserved code
+
+(require 'profile)
+(add-hook 'mu4e-compose-pre-hook #'profile-set-profile-in-compose)
+(global-set-key
+ (kbd "C-c F") 'profile-force-profile-in-compose)
+(setq profile-binding-alist
   '(("private"
-     (user-mail-address  "guivaya@gmail.com")
-     (user-full-name     "Guillermo Vayá Pérez")
-     (mu4e-sent-folder   "/guivaya/[Gmail].Sent Mail")
-     (mu4e-drafts-folder "/guivaya/[Gmail].Drafts")
-     (mu4e-trash-folder  "/guivaya/[Gmail].Trash")
-     ;; (mu4e-refile-folder "/guivaya/[Gmail]/Archive")
-     )
+     (profile-account-maildir . "/guivaya")
+     (mu4e-sent-folder . "/guivaya/[Gmail].Sent Mail")
+     (mu4e-drafts-folder . "/guivaya/[Gmail].Drafts")
+     (mu4e-compose-signature . "http://willyfrog.es")
+     (user-mail-address . "guivaya@gmail.com")
+     (smtpmail-default-smtp-server . "smtp.gmail.com")
+     (smtpmail-local-domain . "gmail.com")
+     (smtpmail-smtp-user . "guivaya@gmail.com")
+     (smtpmail-smtp-server . "smtp.gmail.com")
+     (smtpmail-stream-type . starttls)
+     (smtpmail-smtp-service . 587))
     ("work"
-     (user-mail-address  "guillermo.vaya@ticketea.com")
-     (mu4e-sent-folder   "/ticketea/[Gmail].Enviados")
-     (mu4e-drafts-folder "/ticketea/[Gmail].Borradores")
-     (mu4e-trash-folder  "/ticketea/[Gmail].Papelera")
-     ;; (mu4e-refile-folder "/ticketea/Archives")
-     )))
-
-(setq mu4e-user-mail-address-list
-      (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
-              my-mu4e-account-alist))
+     (profile-account-maildir . "/ticketea")
+     (mu4e-sent-folder . "/ticketea/[Gmail].Enviados")
+     (mu4e-drafts-folder . "/ticketea/[Gmail].Borradores")
+     (mu4e-compose-signature . "software engineer @ ticketea")
+     (user-mail-address . "guillermo.vaya@ticketea.com")
+     (smtpmail-default-smtp-server . "smtp.gmail.com")
+     (smtpmail-local-domain . "gmail.com")
+     (smtpmail-smtp-user . "guillermo.vaya@ticketea.com")
+     (smtpmail-smtp-server . "smtp.gmail.com")
+     (smtpmail-stream-type . starttls)
+     (smtpmail-smtp-service . 587))))
 
 ;; don't save message to Sent Messages, GMail/IMAP will take care of this
 (setq mu4e-sent-messages-behavior 'delete)

@@ -90,7 +90,7 @@
   (setq cider-repl-history-file "~/.emacs.d/cider-history")
   (setq cider-repl-wrap-history t)
   (add-hook 'cider-repl-mode-hook 'subword-mode)
-  (add-hook 'cider-repl-mode-hook 'paredit-mode)
+  ;(add-hook 'cider-repl-mode-hook 'paredit-mode)
   (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
   (my-lispy-common-config))
 
@@ -107,7 +107,7 @@
 (add-hook 'emacs-lisp-mode-hook 'my-lispy-common-config)
 (add-hook 'lisp-mode-hook 'my-common-lisp-mode-hook)
 (add-hook 'scheme-mode 'my-scheme-mode-hook)
-(add-hook 'quack-mode 'my-lispy-common-config)
+;;(add-hook 'quack-mode 'my-lispy-common-config)
 (add-hook 'js2-mode-hook 'my-js-mode-hook)
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'elixir-mode-hook 'alchemist-mode)

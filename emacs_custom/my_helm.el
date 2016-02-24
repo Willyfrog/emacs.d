@@ -21,6 +21,7 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring) ;; shows the stored kill ring
 
 (global-set-key (kbd "C-x b") 'helm-mini) ; useful to find recent files and buffers
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))

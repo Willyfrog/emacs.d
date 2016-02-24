@@ -81,6 +81,7 @@
   (flycheck-mode 1))
 
 (defun my-clojure-mode-hook ()
+  (require 'clojure-mode-extra-font-locking)
   ;; cider
   (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
   (setq cider-repl-pop-to-buffer-on-connect t)

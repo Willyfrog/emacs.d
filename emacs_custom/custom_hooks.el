@@ -39,16 +39,16 @@
 (defun my-lispy-common-config ()
   (rainbow-delimiters-mode 1))
 
-(defun my-common-lisp-mode-hook ()
-  "Common lisp configuration."
-  ;;(setq inferior-lisp-program "rlwrap sbcl")
-  (setq inferior-lisp-program "sbcl")
-  (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-  (require 'slime)
-  (slime-setup)
-  ;(paredit-mode)
-  ;(fci-mode 1)
-  (my-lispy-common-config))
+;; (defun my-common-lisp-mode-hook ()
+;;   "Common lisp configuration."
+;;   ;;(setq inferior-lisp-program "rlwrap sbcl")
+;;   (setq inferior-lisp-program "sbcl")
+;;   (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+;;   (require 'slime)
+;;   (slime-setup)
+;;   ;(paredit-mode)
+;;   ;(fci-mode 1)
+;;   (my-lispy-common-config))
 
 ; eliminamos el highlight-indentation-mode de la lista a cargar
 ;(setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode))
@@ -95,8 +95,9 @@
   (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
   (my-lispy-common-config))
 
-(require 'my_go)
-(require 'my_scheme)
+;; (require 'my_go)
+;; (require 'my_scheme)
+(require 'my_elm)
 
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)

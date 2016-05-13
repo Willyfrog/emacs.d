@@ -14,51 +14,10 @@
 ;;; Code:
 (add-to-list 'load-suffixes ".el.gpg") ;; allow for encrypted .el files
 (add-to-list 'load-path "~/.emacs.d/emacs_custom/")
+
 ;;; add to the path anything that comes from homebrew
 (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
-;(add-to-list 'load-path "~/emacs.d/hy-mode")
-;(require 'hy-mode)
-
-;(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-;(add-to-list 'load-path "~/.emacs.d/el-get/elpa")
-;(add-to-list 'load-path "~/Proyectos/interrupt.el")
-
-;; (unless (require 'el-get nil 'noerror)
-;;   (with-current-buffer
-;;       (url-retrieve-synchronously
-;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-;;     (let (el-get-master-branch)
-;;       (goto-char (point-max))
-;;       (eval-print-last-sexp))))
-
-;; synch packages
-;; (setq my-el-get-packages
-;;       (append
-;;        '(auto-complete
-;;          autopair
-;;          clojure-mode
-;;          cl-lib
-;; 	 cider
-;;          deferred
-;;          fill-column-indicator
-;;          json
-;;          magit
-;;          paredit
-;;          php-mode
-;;          pkgbuild-mode
-;;          popup
-;;          rst-mode
-;;          smart-operator
-;;          smarty-mode
-;;          twittering-mode
-;;          web-mode
-;;          yasnippet
-;;          yasnippet-config
-;;          )))
-
-;(el-get 'sync my-el-get-packages) ;; descomentar para instalar
-;(el-get 'sync)
 
 ;; non el-get
 (require 'package)
@@ -69,10 +28,15 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
 ;; make env
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH")
+  ; (exec-path-from-shell-copy-env "GOPATH")
   (exec-path-from-shell-copy-env "WORKON_HOME")
   )
 
@@ -109,30 +73,6 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))) ;; use bullets instead of asterisks
 ;(require 'ox-reveal) ;; for org-reveal
 ;(require 'ox-md) ;; allow for exporting to Markdown
-
-;; apply some configuration for Mac OS X only
-;; (if (string-equal system-type "darwin")
-;;     (progn
-
-;;       ;; option -> alt & command -> meta
-;;       (setq mac-option-modifier nil
-;;             mac-command-modifier 'meta
-;;             x-select-enable-clipboard t)
-
-;;       ;; Setup PATH in darwin
-;;       (setenv "PATH" (shell-command-to-string "source ~/.bash_profile; echo -n $PATH"))
-;;       ;; Update exec-path with the contents of $PATH
-;;       (loop for path in (split-string (getenv "PATH") ":") do
-;;             (add-to-list 'exec-path path))
-
-;;       ;; Grab other environment variables
-;;       (loop for var in (split-string (shell-command-to-string "source ~/.bash_profile; env")) do
-;;             (let* ((pair (split-string var "="))
-;;                    (key (car pair))
-;;                    (value (cadr pair)))
-;;               (unless (getenv key)
-;;                 (setenv key value))))
-;;       ))
 
 ;;No tool bar mode
 (tool-bar-mode -1)
@@ -185,8 +125,6 @@
 (setq tab-width 4)          ;; 4 espacios por tab
 
 ;; probamos la carga de autocompletado
-;(require 'auto-complete)
-;(global-auto-complete-mode t)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -195,10 +133,6 @@
 ;; habilitar acentos
 (require 'iso-transl)
 (put 'scroll-left 'disabled nil)
-
-;; shift+direction moves to that window
-;; (when (fboundp 'windmove-default-keybindings)
-;;       (windmove-default-keybindings))
 
 ;; make buffernames unique
 (require 'uniquify)

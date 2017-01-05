@@ -39,6 +39,23 @@
 (defun my-lispy-common-config ()
   (rainbow-delimiters-mode 1))
 
+;; Automatically load paredit when editing a lisp file
+;; More at http://www.emacswiki.org/emacs/ParEdit
+;;(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+;; eldoc-mode shows documentation in the minibuffer when writing code
+;; http://www.emacswiki.org/emacs/ElDoc
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+
 ;; (defun my-common-lisp-mode-hook ()
 ;;   "Common lisp configuration."
 ;;   ;;(setq inferior-lisp-program "rlwrap sbcl")
@@ -80,20 +97,21 @@
   (js2-imenu-extras-setup)
   (flycheck-mode 1))
 
-(defun my-clojure-mode-hook ()
-  (require 'clojure-mode-extra-font-locking)
-  ;; cider
-  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-  (setq cider-repl-pop-to-buffer-on-connect t)
-  (setq cider-popup-stacktraces t)
-  (setq cider-repl-popup-stacktraces t)
-  (setq cider-auto-select-error-buffer t)
-  (setq cider-repl-history-file "~/.emacs.d/cider-history")
-  (setq cider-repl-wrap-history t)
-  (add-hook 'cider-repl-mode-hook 'subword-mode)
-  ;(add-hook 'cider-repl-mode-hook 'paredit-mode)
-  (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
-  (my-lispy-common-config))
+(require 'my_clojure)
+;; (defun my-clojure-mode-hook ()
+;;   (require 'clojure-mode-extra-font-locking)
+;;   ;; cider
+;;   (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;;   (setq cider-repl-pop-to-buffer-on-connect t)
+;;   (setq cider-popup-stacktraces t)
+;;   (setq cider-repl-popup-stacktraces t)
+;;   (setq cider-auto-select-error-buffer t)
+;;   (setq cider-repl-history-file "~/.emacs.d/cider-history")
+;;   (setq cider-repl-wrap-history t)
+;;   (add-hook 'cider-repl-mode-hook 'subword-mode)
+;;   ;(add-hook 'cider-repl-mode-hook 'paredit-mode)
+;;   (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+;;   (my-lispy-common-config))
 
 ;; (require 'my_go)
 ;; (require 'my_scheme)
@@ -101,7 +119,7 @@
 
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)
-(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
+;(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'nrepl-mode-hook 'my-lispy-common-config)
 (add-hook 'php-mode-hook 'my-php-mode-hook)

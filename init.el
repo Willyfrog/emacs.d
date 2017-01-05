@@ -293,9 +293,6 @@
  '(linum-format " %6d ")
  '(menu-bar-mode nil)
  '(ns-right-alternate-modifier (quote none))
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/tkt_org/sprints/2015/10_26.org" "~/Dropbox/org/todo.org" "~/Dropbox/tkt_org/ticketea.org")))
  '(package-selected-packages
    (quote
     (csv-mode rjsx-mode clj-refactor yaml-mode web-mode swoop switch-window smartparens rainbow-delimiters pretty-mode paredit ox-ioslide ox-gfm org-bullets multiple-cursors markdown-mode magit helm-swoop helm-projectile flycheck-clojure exec-path-from-shell company clojure-snippets clojure-mode-extra-font-locking cljdoc avy ansible-doc ansible ag)))

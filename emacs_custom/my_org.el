@@ -8,11 +8,11 @@
 (setq org-directory (file-name-as-directory "~/Dropbox/org"))
 (setq org-work-directory (file-name-as-directory "~/org"))
 (setq org-log-done t)
-(setq org-agenda-files (list (concat org-directory "todo.org")
-                             (concat org-work-directory "todo.org")))
-(setq diary-file (concat org-directory "diary"))
+(setq org-agenda-files (list (expand-file-name "todo.org" org-directory)
+                             (expand-file-name "todo.org" org-work-directory)))
+(setq diary-file (expand-file-name "diary" org-directory))
 (setq org-agenda-include-diary t)
-(setq org-default-notes-file (concat org-directory "notas/varios.org"))
+(setq org-default-notes-file (expand-file-name "notas/varios.org" org-directory))
 (setq org-catch-invisible-edits 'smart) ;; 
 
 ;;; remove unwanted holidays

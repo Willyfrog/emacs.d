@@ -7,12 +7,49 @@
        (compile (format "php -l %s" (buffer-file-name))))
 ;; end of php lint
 
+
+;; http://www.flycheck.org/manual/latest/index.html
+(require 'flycheck)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
+
+;; use local eslint from node_modules before global
+;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+(defun my/use-eslint-from-node-modules ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+
 (defun my-php-mode-hook ()
   "My PHP mode configuration.  http://stackoverflow.com/questions/12254982/emacs-php-indentation ."
   (setq indent-tabs-mode nil
         tab-width 4
-        c-default-style "linux"
-        c-basic-offset 4)
+        ;c-default-style "linux"
+        ;c-basic-offset 4
+        )
   (setq case-fold-search t)
   ;;(setq fill-column 78)
   ;;(c-set-offset 'arglist-cont 0)
@@ -26,7 +63,7 @@
   ;; (setq fly/phpcs-phpexe "/usr/bin/php")
   ;; (setq fly/phpcs-standard "PSR2")
   (setq flycheck-phpcs-standard "PSR2")
-  (c-set-offset 'case-label 4)
+  ;(c-set-offset 'case-label 4)
   (flycheck-mode 1)
   ;(flymake-mode-on)
   ;(auto-complete-mode t)
@@ -86,16 +123,7 @@
   (setq py-smart-indentation t)
   (setq fill-column 80))
 
-(defun my-js-mode-hook ()
-  "Javascript config"
-  (defvar preferred-javascript-indent-level 2)
-  (setq mode-name "JS2")
-  (setq js2-highlight-level 3)
-  (setq-default
-   js2-basic-offset preferred-javascript-indent-level
-   js2-bounce-indent-p nil)
-  (js2-imenu-extras-setup)
-  (flycheck-mode 1))
+(require 'my_js)
 
 (require 'my_clojure)
 ;; (defun my-clojure-mode-hook ()
@@ -122,7 +150,7 @@
 ;(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'nrepl-mode-hook 'my-lispy-common-config)
-(add-hook 'php-mode-hook 'my-php-mode-hook)
+;(add-hook 'php-mode-hook 'my-php-mode-hook)
 (add-hook 'hy-mode-hook 'my-lispy-common-config)
 (add-hook 'emacs-lisp-mode-hook 'my-lispy-common-config)
 (add-hook 'lisp-mode-hook 'my-common-lisp-mode-hook)

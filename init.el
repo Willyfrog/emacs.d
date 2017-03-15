@@ -127,6 +127,7 @@
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-jsx-mode))
 ;(require 'alchemist)
 ;(add-to-list 'auto-mode-alist '("\\.ex?\\'" . alchemist-mode))
 
@@ -295,7 +296,7 @@
  '(ns-right-alternate-modifier (quote none))
  '(package-selected-packages
    (quote
-    (csv-mode rjsx-mode clj-refactor yaml-mode web-mode swoop switch-window smartparens rainbow-delimiters pretty-mode paredit ox-ioslide ox-gfm org-bullets multiple-cursors markdown-mode magit helm-swoop helm-projectile flycheck-clojure exec-path-from-shell company clojure-snippets clojure-mode-extra-font-locking cljdoc avy ansible-doc ansible ag)))
+    (nodejs-repl nvm expand-region csv-mode rjsx-mode clj-refactor yaml-mode web-mode swoop switch-window smartparens rainbow-delimiters pretty-mode paredit ox-ioslide ox-gfm org-bullets multiple-cursors markdown-mode magit helm-swoop helm-projectile flycheck-clojure exec-path-from-shell company clojure-snippets clojure-mode-extra-font-locking cljdoc avy ansible-doc ansible ag)))
  '(show-paren-mode t)
  '(tabbar-background-color "#ffffff")
  '(tool-bar-mode nil)
@@ -347,11 +348,11 @@
 ;smart-mode-line
 ;; (setq sml/theme 'light)
 ;; (sml/setup)
-(global-pretty-mode t)
+; (global-pretty-mode t)
 
 
 ;; open todo tasks
 (find-file (expand-file-name "~/Dropbox/org/todo.org"))
 
-(provide 'emacs)
-;;; emacs ends here
+(provide 'init)
+;;; init.el ends here

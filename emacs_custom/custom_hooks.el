@@ -1,3 +1,7 @@
+;;; custom_hooks --- Summary
+;; custom code for adding hooks
+;;; Commentary:
+;;; Code
 ;; funcion propia para convertir a 4 espacios
 
 ;; php lint
@@ -14,7 +18,8 @@
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers
-                      '(javascript-jshint)))
+                      '(javascript-jshint
+                        josn-jsonlist)))
 
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
@@ -24,11 +29,6 @@
 
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
-
-;; disable json-jsonlist checking for json files
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(json-jsonlist)))
 
 ;; use local eslint from node_modules before global
 ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
@@ -114,9 +114,9 @@
   ;;       "--log-level" "DEBUG"))
   ;; (setq jedi:setup-keys t)
   ;; (setq jedi:complete-on-dot t)
-  (if pyvenv-virtual-env
-      (message "should load elpy");(elpy-enable)
-    (message "no virtualenv is loaded, use pyvenv-workon and enable elpy"))
+  ;; (if pyvenv-virtual-env
+  ;;     (message "should load elpy");(elpy-enable)
+  ;;   (message "no virtualenv is loaded, use pyvenv-workon and enable elpy"))
   (setq py-shell-switch-buffers-on-execute-p t)
   (setq py-switch-buffers-on-execute-p t)
   (setq py-split-windows-on-execute-p nil)
@@ -141,10 +141,11 @@
 ;;   (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 ;;   (my-lispy-common-config))
 
-;; (require 'my_go)
+(require 'my_go)
 ;; (require 'my_scheme)
 (require 'my_elm)
 
+(require 'my_kotlin)
 ;; hooks para cargar cosas extra con los modes
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 ;(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)

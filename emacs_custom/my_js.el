@@ -6,7 +6,7 @@
 ;;; Code:
 (defun my-js-mode-hook ()
   "Javascript config."
-  (defvar preferred-javascript-indent-level 2)
+  (defvar preferred-javascript-indent-level 4)
   (setq mode-name "JS2")
   
   (add-hook 'js2-mode-hook 'company-mode)
@@ -22,8 +22,10 @@
    js2-bounce-indent-p t
    js2-mode-show-strict-warnings nil)   ;; turn off js2-mode warnings
   (js2-imenu-extras-setup)
-  (flycheck-mode 1))
-
+  (flycheck-mode 1)
+                                        ;(flycheck-select-checker 'javascript-standard)
+  
+  )
 
 (provide 'my_js)
 ;;; my_js.el ends here

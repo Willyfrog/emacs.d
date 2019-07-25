@@ -35,7 +35,10 @@
 ;; gnu es necesario para emacs < 24
 ;; (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+
+
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;(add-to-list 'package-archives '("melpa-mirror" . "http://www.mirrorservice.org/sites/melpa.org/packages/") t)
 (package-initialize)
 
 ;;;; PLATFORM CONFIGURATION
@@ -43,7 +46,7 @@
 ;; make env
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
-  ;(exec-path-from-shell-copy-env "GOPATH")
+  (exec-path-from-shell-copy-env "GOPATH")
   (exec-path-from-shell-copy-env "WORKON_HOME"))
 
 
@@ -271,6 +274,7 @@
  '(evil-normal-state-cursor (quote ("#FFA000" box)))
  '(evil-visual-state-cursor (quote ("#66BB6A" box)))
  '(exec-path-from-shell-check-startup-files nil)
+ '(gradle-use-gradlew t)
  '(highlight-symbol-colors
    (quote
     ("#FFA000" "#66BB6A" "#0097A7" "#42A5F5" "#7E57C2" "#D84315")))
@@ -291,12 +295,17 @@
        ("#B388FF" . 30)
        ("#f2f2f2" . 60)
        ("#FAFAFA" . 80)))))
+ '(kotlin-tab-width 4)
  '(linum-format " %6d ")
  '(menu-bar-mode nil)
  '(ns-right-alternate-modifier (quote none))
  '(package-selected-packages
    (quote
-    (nodejs-repl nvm expand-region csv-mode rjsx-mode clj-refactor yaml-mode web-mode swoop switch-window smartparens rainbow-delimiters pretty-mode paredit ox-ioslide ox-gfm org-bullets multiple-cursors markdown-mode magit helm-swoop helm-projectile flycheck-clojure exec-path-from-shell company clojure-snippets clojure-mode-extra-font-locking cljdoc avy ansible-doc ansible ag)))
+    (php-extras php-mode alchemist elixir-mode elixir-yasnippets flycheck-elixir gradle-mode flycheck-kotlin yasnippet-snippets kotlin-mode pyvenv python-mode company-go go-direx go-errcheck go-rename go-stacktracer golint gotest protobuf-mode terraform-mode go-dlv go-snippets go-eldoc go-gopath go-guru go-complete go-mode evernote-mode ox-reveal nodejs-repl nvm expand-region csv-mode rjsx-mode clj-refactor yaml-mode web-mode swoop switch-window smartparens rainbow-delimiters pretty-mode paredit ox-ioslide ox-gfm org-bullets multiple-cursors markdown-mode magit helm-swoop helm-projectile flycheck-clojure exec-path-from-shell company clojure-snippets clojure-mode-extra-font-locking cljdoc avy ansible-doc ansible ag)))
+ '(safe-local-variable-values
+   (quote
+    ((cider-lein-parameters . "with-profile test repl :headless :host ::")
+     (cider-boot-parameters . "cider repl -s ...others... wait"))))
  '(show-paren-mode t)
  '(tabbar-background-color "#ffffff")
  '(tool-bar-mode nil)
